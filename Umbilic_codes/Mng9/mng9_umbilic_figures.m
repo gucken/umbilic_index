@@ -1,0 +1,16 @@
+% Compute all the figures
+
+mng9_fig_map_1
+mng9_fig_map_2a
+mng9_fig_map_2b
+mng9_fig_map_2c
+mng9_fig_map_3a
+mng9_fig_map_3b
+mng9_fig_map_3c
+mng9_fig_map_4a
+mng9_fig_map_4b
+mng9_fig_map_4c
+mng9_fig_map_4d
+mng9_fig_map_5a
+mng9_fig_map_5b
+mng9_fig_map_5c

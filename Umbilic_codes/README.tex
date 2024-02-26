@@ -1,0 +1,175 @@
+\documentclass{article}[12pt]
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,graphicx,subcaption}
+\usepackage{color}
+\renewcommand{\floatpagefraction}{1}
+\renewcommand{\topfraction}{1}
+\newcommand \R{\mathbb{R}}
+\newcommand \Z{\mathbb{Z}}
+\newcommand \Q{\mathbb{Q}}
+\newcommand\eJG[1]{{\color{black}{#1}}}
+\usepackage{url}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+
+\begin{document}
+
+This folder has the Matlab codes and a Macaulay2 script used to produce the paper "Bounds on the Index of an Umbilic Point" by John Guckenheimer.  There are two subdirectories Mng9 with codes for Figures $1 - 5$ and Mng4 with codes for Figure 6.
+The programs in Mng9 compute information about the principal foliations of surfaces $S_a$ that are the graphs of the functions 
+$$h_a(x,y) = 1 - (1 - x^2 - y^2)^{(1/2)} + a1 x^9 + a2 x^8y + a3 x^6y^2 + a4 x^5y^3 + a5 x^4y^4 + a6 x^3y^5 + a7x^2y^6 + a8 x y^7 + a9 y^8$$
+\begin{itemize}
+\item
+mng9\_z.m
+
+This function evaluates
+$$h_a(x,y) = 1 - (1 - x^2 - y^2)^{(1/2)} + a1 x^9 + a2 x^8y + a3 x^6y^2 + a4 x^5y^3 + a5 x^4y^4 + a6 x^3y^5 + a7x^2y^6 + a8 x y^7 + a9 y^8$$
+
+\item
+mng9\_pv\_sym.m
+
+This script  uses the symbolic toolbox to generate the expressions used in computing the principal directions.
+
+\item
+mng9\_pv\_xy.m
+
+This function uses the expressions produced  by mng9\_pv\_sym.m to compute the principal directions of $S_a$ at $(x,y,h_a(x,y))$.
+
+\item
+mng9\_fig\_map\_x.m
+
+These scripts plot the figures in the paper. More extensive documentation is included in mng9\_fig\_map\_1 than the remainder of these scripts since they are all similar.
+
+\item
+mng9\_umbilic\_figures.m
+
+This script is a "driver" to plot all the figures.
+
+\item
+mng9\_lcurv2.m
+
+This function determines the orientation of a principal vector compatible with that of an adjacent point along a line of curvature. 
+
+\item
+mng9\_step.m
+
+This function computes one step along a line of curvature using the "standard" Runge-Kutta algorithm rk4.
+
+\item
+mng9\_traj2.m
+
+This function computes a line of curvature using Runge-Kutta steps.
+
+\item
+mng9\_umb\_a13\_sym.m
+
+This script uses the symbolic toolbox to find $a3(x)$ that gives approximate umbilics in the subfamily with $a1 = 1$,$a2 = 0$, $y=0$ and $a_j = 0, j>3$.
+
+\item
+mng9\_umb\_a3x.m
+
+This script uses the output of mng9\_umb\_a13\_sym.m to locate approximation of curve of umbilics emanating from origin along $x$ axis.
+
+\end{itemize}
+
+The programs in Mng4 compute information about the principal foliations of surfaces $S_a$ that are the graphs of the functions 
+$$h(x,y) = x^2/2 +y^2/2 + l_d(x^2-y^2) + 2l_o xy + a_3 x^3 + a_2 X^2y +a_1 x y^2 +a_0 y^3 + b_4 x^4 +b_3 x^3 y + b_2 x^2 y^2 + b_1 x y^3 + b_0 y^4$$
+Most of the files in this directory are similar to the ones in Mng9:
+
+\begin{itemize}
+\item
+mng4\_z.m
+
+This function evaluates h(x,y).
+
+\item
+mng4\_pv\_sym.m
+
+This script uses the symbolic toolbox to generate the expressions used in computing the principal directions.
+
+\item
+mng4\_pv\_xy.m 
+
+This function uses the expressions produced  by mng9\_pv\_sym.m to compute the principal directions of the graph of $h(x,y)$.
+
+\item
+mng4\_hcoeffs.m
+
+This function computes derivatives of $h(x,y)$.
+
+\item
+mng4\_lcurv2.m
+
+This function determines the orientation of a principal vector compatible with that of an adjacent point along a line of curvature. 
+
+\item
+mng4\_step.m
+
+This function computes one step along a line of curvature using the "standard" Runge-Kutta algorithm rk4.
+
+\item
+mng4\_traj\_yc.m
+
+This function computes a line of curvature using Runge-Kutta steps. It uses step sizes adapted to proximity to an umbilic and computes "events" that are intersections of the line of curvature with a cross-section.
+
+\item
+mng4\_cd.m
+
+Function that measures proximity to an umbilic.
+
+\item
+mng4\_umbnewton.m
+
+This function employs Newton's method to locate an umbilic.
+
+\item
+mng4\_umbnewtonx.m
+
+Driver to locate umbilics close to the $x$-axis.
+
+\item
+mng4\_umbnewtony.m
+
+Driver to locate umbilics close to the $y$-axis.
+
+\item
+mng4\_pp0.m
+
+Generate figure displaying principal foliations when parameters $a_i$ and $b_i$ are all zero.
+
+\item
+mng4\_pp0.m
+
+Generate figure displaying principal foliations without umbilic connections. The middle panel illustrates that lines of curvature are not closed when $l_d = l_o = 0$.
+
+\end{itemize}
+
+There are also three Matlab codes and one Macaulay2 script  in this directory:
+
+\begin{itemize}
+\item
+h\_remove\_z.m
+
+This script uses the symbolic toolbox to compute the Monge form of a surface defined as the zero level set of a function $h(x,y,z)$ at a point $(xu,0,zu)$.
+It assumes that $dh(0,0,0) = (0,0,az)$ and that $h$ is even in $y$.
+
+\item
+mngdof\_monge.m
+
+This function computes Monge coordinates of an umbilic on the surface which is the zero level set of
+$$z - h(x,y) = z - 1 + (1 - x^2 - y^2)^{(1/2)} - a1*x^d - a3*x^{d-2}*y^2 - a5*x^{d-4}*y^4$$
+located at $(xu,0,h(xu,0))$. It then evaluates an expression $i(d)$ from a paper of Berry and Hannay that 
+whose sign determines the index of the umbilic points which emerge from the origin as the parameter is varied.
+
+\item
+mngd\_tind.m
+
+This script evaluates the function $i(d)$ from mngdof\_monge.m for even degrees $d \in [4,20]$. It discovers that
+$i(d)$ is a polynomial of degree 5.
+ 
+\item
+mng9\_matrix\_macaulay.m2
+
+Macaulay 2 script used to analyze the determinant appearing in the paper.
+
+\end{itemize}
+\end{document}
